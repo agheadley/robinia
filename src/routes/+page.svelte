@@ -1,9 +1,10 @@
 <script lang="ts">
-	
-let testRead = async()=>{
+import { supabase } from '$lib/supabaseClient'
+
+const testRead = async()=>{
 	let response = await fetch('/edge/read', {
 		method: 'POST',
-		body: JSON.stringify({table:"test_person_table",select:"*"}),
+		body: JSON.stringify({table:"group_table",select:"*"}),
 		headers: {'content-type': 'application/json'}
 	});
 	let data = await response.json();
@@ -14,7 +15,14 @@ $effect(()=>{
 	testRead();
 
 	
+
+	
 });
+
+
+const checkUser=async()=>{
+	//console.log(user);
+};
 
 </script>
 
@@ -28,6 +36,11 @@ $effect(()=>{
 	Testing 1,2,3 ...
 </section>
 
+
+<section>
+	<a href='/signin'>Signin</a>
+	<button onclick={checkUser}>User?</button>
+</section>
 <style>
 
 </style>
