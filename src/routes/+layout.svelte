@@ -1,57 +1,60 @@
 <script lang="ts">
-	import Header from './Header.svelte';
 	import '../app.css';
+	import Alert from '$lib/_Alert.svelte';
+	import * as icon from '$lib/icon';
+	import {goto} from '$app/navigation';
+
+	let isExam:boolean = $state(false);
 
 	let { children } = $props();
+
+
+
+	const reload=()=>{
+		
+	};
+
 </script>
 
-<div class="app">
-	<Header />
-
-	<main>
-		{@render children()}
-	</main>
-
-	<footer>
-		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
-	</footer>
+	<div class="app">
+	<!-- simple css adjusted so .container used instead of body - body margin:0 added too to appp.css-->
+	<Alert></Alert>
+	<div class="container">
+	<header>
+		
+			<div><a class="brand" href={'javascript:void(0)'} onclick={reload}>Robinia</a></div>
+			<div>
+				
+			</div>
+		
+		<nav>
+			
+		  </nav>
+	  </header>
+	
+	  	<main>
+			{@render children()}
+	
+		</main>
+	
+	  <footer>
+		<p>Svelte5 - Typescript -  Supabase - <a href="https://simplecss.org/demo" target=”_blank”>SimpleCSS Guide</a></p>
+	  </footer>
+	</div>
 </div>
 
+	
+
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
 
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+.brand  {
+	color:#0d47a1;
+	font-size:2rem;
+	font-weight:bold;
+	text-decoration: none;
+} 
 
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
 
-	footer a {
-		font-weight: bold;
-	}
 
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
+
 </style>

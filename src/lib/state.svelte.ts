@@ -1,0 +1,1 @@
+export const alert = $state({msg:"",type:'',ms:3000});
