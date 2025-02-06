@@ -1,19 +1,15 @@
 import { redirect } from '@sveltejs/kit';
-import { supabase } from '$lib/supabaseClient'
 
 export const GET = async (event) => {
-  //console.log(event);
 	const {
 		url,
-		locals
+		locals: { supabase }
 	} = event;
-	const code =url.searchParams.get('code');
-	const next = url.searchParams.get('next') ?? '/';
+	const code = url.searchParams.get('code') as string;
+	const next = url.searchParams.get('next') ?? '/private';
 
-  console.log(url.searchParams);
-
-  //console.log(code);
-
+  console.log('auth/callback next',next);
+  
   if (code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
